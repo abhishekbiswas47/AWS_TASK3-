@@ -165,3 +165,12 @@ After that we have to run this command and the terraform will perform the task.
     terraform apply --auto-approve
 
 ###Few screenshots of the task-
+![alt text](https://github.com/abiswah/AWS_TASK3-/blob/master/IMG-20200815-WA0017.jpg?raw=true)
+
+![alt text](https://github.com/abiswah/AWS_TASK3-/blob/master/IMG-20200815-WA0018.jpg?raw=true)
+
+![alt text](https://github.com/abiswah/AWS_TASK3-/blob/master/IMG-20200815-WA0019.jpg?raw=true)
+
+![alt text](https://github.com/abiswah/AWS_TASK3-/blob/master/IMG-20200815-WA0020.jpg?raw=true)
+
+![alt text](https://github.com/abiswah/AWS_TASK3-/blob/master/IMG-20200815-WA0021.jpg?raw=true)
