@@ -30,6 +30,9 @@ Note: Wordpress instance has to be part of public subnet so that our client can 
 mysql instance has to be part of private  subnet so that outside world can't connect to it.
 Don't forgot to add auto ip assign and auto dns name assignment option to be enabled.
 
-Try each step first manually and write Terraform code for the same.
-This will give u proper understanding of workflow of task.
-And the task is complete.
+### Prerequisite-
+1. AWS Console Account
+2. AWS CLI
+3. Terraform Installed
+4. Putty or Mobaxterm
+
