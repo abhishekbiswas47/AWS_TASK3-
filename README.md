@@ -142,3 +142,26 @@ Don't forgot to add auto ip assign and auto dns name assignment option to be ena
         Name = "task3-sg"
       }
     }
+
+#### Step 7:
+##### Write a terraform code to Launch an ec2 instance which has Wordpress setup already having the security group allowing port 80 so that our client can connect to our wordpress site.
+    resource "aws_instance" "wordpress" {
+       ami = "ami-004a955bfb611bf13"
+       instance_type = "t2.micro"
+       associate_public_ip_address = true
+       subnet_id = aws_subnet.public.id
+       vpc_security_group_ids = [ aws_security_group.task3.id]
+       key_name = "aniket1234"
+    tags = { 
+             Name = "abhios"
+         }
+     }
+To use our terraform code first we have to initialize it by using this command-:
+
+    terraform init
+
+After that we have to run this command and the terraform will perform the task.
+
+    terraform apply --auto-approve
+
+###Few screenshots of the task-
