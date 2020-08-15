@@ -36,3 +36,46 @@ Don't forgot to add auto ip assign and auto dns name assignment option to be ena
 3. Terraform Installed
 4. Putty or Mobaxterm
 
+## Lets Begin!!!
+#### Step 1:
+##### Defining the provider on which we have to create infrastructure.
+    provider "aws" {
+    region = “ap-south-1”
+    profile = “default”
+    }
+
+#### Step 2:
+##### Creating a VPC with CIDR Block 192.168.0.0/16 and enable DNS Hostnames to assign dns names to instances.
+    resource “aws_vpc” “myvpc”{
+     cidr_block = “192.168.0.0/16”
+     instance_tenancy = “default”
+     enable_dns_hostnames = true
+    tags = {
+     Name = “abhishekvpc”
+     }
+    }
+
+#### Step 3:
+##### Creating public and private subnet.
+##### Public subnet-
+    resource "aws_subnet" "public" {
+     vpc_id     = aws_vpc.vpc.id
+     cidr_block = "192.168.10.0/24"
+     availability_zone = "ap-south-1b"
+     map_public_ip_on_launch = "true"
+    tags = {
+      Name = "public-subnet"
+     }
+    }
+##### Private subnet-
+    resource "aws_subnet" "private" {
+     vpc_id     = aws_vpc.vpc.id
+     cidr_block = "192.168.20.0/24"
+     availability_zone = "ap-south-1a"
+    tags = {
+      Name = "private-subnet"
+     }
+    }
+
+#### Step 4:
+##### 
