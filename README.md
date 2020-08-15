@@ -78,4 +78,28 @@ Don't forgot to add auto ip assign and auto dns name assignment option to be ena
     }
 
 #### Step 4:
-##### 
+#####  Creating internet gateway to connect our VPC to internet.
+    resource "aws_internet_gateway" "gateway" {
+     vpc_id = aws_vpc.myvpc.id
+    tags = {
+      Name = "abhi_gateway"
+     }
+    }
+
+#### Step 5:
+##### Write a Terraform code to Create a routing table for Internet gateway so that instance can connect to outside world, update and associate it with public subnet.
+    resource "aws_route_table" "route" {
+      vpc_id = aws_vpc.vpc.id
+           route {
+              cidr_block = "0.0.0.0/0"
+              gateway_id = aws_internet_gateway.gateway.id
+          }
+    tags = {
+                 Name = "gatewayroute"
+          }
+       }
+    resource "aws_route_table_association" "public"
+     {
+      subnet_id   = aws_subnet.public.id
+      route_table_id = aws_route_table.route.id
+     }
