@@ -103,3 +103,42 @@ Don't forgot to add auto ip assign and auto dns name assignment option to be ena
       subnet_id   = aws_subnet.public.id
       route_table_id = aws_route_table.route.id
      }
+
+#### Step 6:
+##### Write a terraform code to configure security groups allowing SSH, HTTP and TCP.
+    resource "aws_security_group" "task3-sg" {
+      name        = "task3-sg"
+      description = "Allow traffic SSH,TCP, HTTP"
+      vpc_id      = aws_vpc.vpc.id
+    ingress {
+        description = "HTTP"
+        from_port   = 80
+        to_port     = 80
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+  
+    ingress {
+        description = "SSH"
+        from_port   = 22
+        to_port     = 22
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    ingress {
+        description = "TCP"
+        from_port   = 3306
+        to_port     = 3306
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    egress {
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
+        cidr_blocks = ["0.0.0.0/0"]
+      }
+    tags = {
+        Name = "task3-sg"
+      }
+    }
